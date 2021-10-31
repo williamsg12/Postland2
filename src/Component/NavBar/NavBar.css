@@ -1,0 +1,9 @@
+.nav{
+	text-decoration: none;
+	transition: .4s;
+	padding-left: 10px;
+}
+.nav :hover{
+	color: aliceblue;
+	padding-left: 20px;
+}
