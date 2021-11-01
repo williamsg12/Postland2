@@ -2,6 +2,9 @@
 	text-decoration: none;
 	transition: .4s;
 	padding-left: 10px;
+	color: pink;
+
+
 }
 .nav :hover{
 	color: aliceblue;
