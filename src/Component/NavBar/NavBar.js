@@ -1,13 +1,15 @@
 import React from 'react';
 import './NavBar.css';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import { Container,Navbar,Nav } from 'react-bootstrap';
 
-const NavBar = () => {
-
+const NavBar = ({ loggedin,setLoggedIn }) => {
+	let history = useHistory();
 
 	function signOut(params) {
 		localStorage.removeItem('token');
+		setLoggedIn(false)
+		history.push('/');
 	}
 	return (
 		<div className='side-nav'>
@@ -36,7 +38,7 @@ const NavBar = () => {
 							<Link to='setting' className='nav'>
 								<h4 className='nav'>Settings</h4>
 							</Link>
-							{!localStorage.getItem('token') ? (
+							{!loggedin ? (
 								<Link to='/login' className='nav'>
 									<h4 className='nav'>Sign In</h4>
 								</Link>

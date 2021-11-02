@@ -9,11 +9,12 @@ const Signup = () => {
     const handleSubmit = (event) => {
 			event.preventDefault();
 			axios.post(`${URL}/users/`, user)
+			.then(console.log(user))
 				
 		}
 
 		const handleChange = (event) => {
-			setUser({ ...user, [event.target.id]: event.target.value });
+			setUser({ ...user, [event.target.name]: event.target.value });
 		};
     return (
 			<div>
@@ -24,6 +25,7 @@ const Signup = () => {
 							onChange={handleChange}
 							type='username'
 							placeholder='Enter username'
+							name='username'
 						/>
 					</Form.Group>
 					<Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -32,6 +34,7 @@ const Signup = () => {
 							onChange={handleChange}
 							type='email'
 							placeholder='Enter email'
+							name='email'
 						/>
 					</Form.Group>
 
@@ -41,14 +44,16 @@ const Signup = () => {
 							onChange={handleChange}
 							type='password'
 							placeholder='Password'
+							name='password'
 						/>
 					</Form.Group>
 					<Form.Group className='mb-3' controlId='formBasicPassword'>
 						<Form.Label>Enter Password Again</Form.Label>
 						<Form.Control
 							onChange={handleChange}
-							type='password'
+							type='re_password'
 							placeholder='Password'
+							name='re_password'
 						/>
 					</Form.Group>
 					<Button variant='primary' type='submit'>

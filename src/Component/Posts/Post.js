@@ -1,21 +1,22 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Form,Button } from 'react-bootstrap'
-
+import { useHistory } from 'react-router';
 
 const Post = () => {
 
     const[post,setPost]=useState({})
-    // let useHistory=useHistory()
+    let history=useHistory()
 
     const handleSubmit = (event) => {
 			event.preventDefault();
 			axios.post(`${URL}/messenger/`,post )
-            .then(res=>localStorage.setItem('token',res.data.auth_token))
+			history.push('/')
+           
 		};
 
 		const handleChange = (event) => {
-			setPost({ ...post, [event.target.id]: event.target.value });
+			setPost({ ...post, [event.target.name]: event.target.value });
 		};
 
     return (
@@ -24,11 +25,16 @@ const Post = () => {
 				<Form onSubmit={handleSubmit}>
 					<Form.Group controlId='formFile' className='mb-3'>
 						<Form.Label>Input picture</Form.Label>
-						<Form.Control onChange={handleChange} type='file' />
+						<Form.Control onChange={handleChange} type='file' name='picture' />
 					</Form.Group>
 					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
 						<Form.Label>Body</Form.Label>
-						<Form.Control onChange={handleChange} as='textarea' rows={3} />
+						<Form.Control
+							onChange={handleChange}
+							as='textarea'
+							rows={3}
+							name='body'
+						/>
 					</Form.Group>
 					<Button type='submit' className='btn btn-info'>
 						Submit

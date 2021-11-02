@@ -1,18 +1,19 @@
 import axios from 'axios';
-import React, { useState,useHistory } from 'react';
+import React, { useState } from 'react';
 import { Form, Card, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setLoggedIn}) => {
 
 	const [person,setperson]=useState({})
-	// let useHistory=useHistory()
+	let history=useHistory()
 
 	const handleSubmit = (event)=>{
 		event.preventDefault()
 		axios.post(`http://localhost:8000/token/login/`,person)
 		.then(res=>localStorage.setItem('token',res.data.auth_token))
-		// useHistory.push('/')
+		setLoggedIn(true)
+		history.push('/')
 	}
 
 	const handleChange = (event)=>{
