@@ -11,7 +11,7 @@ const Login = ({setLoggedIn}) => {
 
 	const handleSubmit = (event)=>{
 		event.preventDefault()
-		axios.post(`${URL}/token/login/`,person)
+		axios.post(`${URL}/token/login`,person)
 		.then(res=>localStorage.setItem('token',res.data.auth_token))
 		setLoggedIn(true)
 		history.push('/')
