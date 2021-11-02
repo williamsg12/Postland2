@@ -15,12 +15,15 @@ const Posts = () => {
 
 	const showPosts =  () => {
 		
-			axios.get(`${URL}/messenger/`, {
-					headers: { Authorization: `Token ${localStorage.getItem('token')}` },
+			axios
+				.get(`${URL}/messenger/`, {
+					headers: {
+						Authorization: `Token edc4bbb1a9cff37eec56e3df24c42d6fa9263dce`,
+					},
 				})
 				.then((res) => setPosts(res.data))
-				.then(posts=>console.log(posts))
-				.catch(error=>console.log(error))
+				.then((posts) => console.log(posts))
+				.catch((error) => console.log(error));
 		
 		}
 		
