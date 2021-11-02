@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Card, Button} from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { URL } from '../../config'
 
 const Login = ({setLoggedIn}) => {
 
@@ -10,7 +11,7 @@ const Login = ({setLoggedIn}) => {
 
 	const handleSubmit = (event)=>{
 		event.preventDefault()
-		axios.post(`http://localhost:8000/token/login/`,person)
+		axios.post(`${URL}/token/login/`,person)
 		.then(res=>localStorage.setItem('token',res.data.auth_token))
 		setLoggedIn(true)
 		history.push('/')

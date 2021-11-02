@@ -6,7 +6,7 @@ import { Container,Navbar,Nav } from 'react-bootstrap';
 const NavBar = ({ loggedin,setLoggedIn }) => {
 	let history = useHistory();
 
-	function signOut(params) {
+	function signOut(event) {
 		localStorage.removeItem('token');
 		setLoggedIn(false)
 		history.push('/');
