@@ -10,7 +10,7 @@ const Signup = () => {
 			event.preventDefault();
 			axios
 				.post(`${URL}/users/`, user)
-				.then((res) => localStorage.setItem('token', res.data.auth_token));
+				;
 		};
 
 		const handleChange = (event) => {
@@ -18,7 +18,15 @@ const Signup = () => {
 		};
     return (
 			<div>
-				<Form className='singupform'>
+				<Form onSubmit={handleSubmit} className='singupform'>
+					<Form.Group className='mb-3' controlId='formBasicUsername'>
+						<Form.Label>Usermane</Form.Label>
+						<Form.Control
+							onChange={handleChange}
+							type='username'
+							placeholder='Enter username'
+						/>
+					</Form.Group>
 					<Form.Group className='mb-3' controlId='formBasicEmail'>
 						<Form.Label>Email address</Form.Label>
 						<Form.Control
@@ -26,11 +34,18 @@ const Signup = () => {
 							type='email'
 							placeholder='Enter email'
 						/>
-						
 					</Form.Group>
 
 					<Form.Group className='mb-3' controlId='formBasicPassword'>
 						<Form.Label>Password</Form.Label>
+						<Form.Control
+							onChange={handleChange}
+							type='password'
+							placeholder='Password'
+						/>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='formBasicPassword'>
+						<Form.Label>Enter Password Again</Form.Label>
 						<Form.Control
 							onChange={handleChange}
 							type='password'
