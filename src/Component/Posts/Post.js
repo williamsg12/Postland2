@@ -9,8 +9,8 @@ const Post = () => {
     let history=useHistory()
 
     const handleSubmit = (event) => {
-			event.preventDefault();
-			axios.post(`${URL}/messenger/`,post )
+			axios.post(`${URL}/messenger/`,post ,{
+			headers: { Authorization: `Token ${localStorage.getItem('token')}` }})
 			history.push('/')
            
 		};
