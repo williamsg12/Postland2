@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Card, Button} from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-
+import URLS from '../../config';
 
 const Login = ({setLoggedIn}) => {
 
@@ -12,7 +12,7 @@ const Login = ({setLoggedIn}) => {
 	const handleSubmit = (event)=>{
 		event.preventDefault()
 		axios
-			.post(`${URL}/token/login`, person, {
+			.post(`${URLS}/token/login`, person, {
 				headers: `Token edc4bbb1a9cff37eec56e3df24c42d6fa9263dce`,
 			})
 			.then((res) => localStorage.setItem('token', res.data.auth_token));

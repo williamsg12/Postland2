@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Form,Button } from 'react-bootstrap'
 import { useHistory } from 'react-router';
+import URLS from '../../config';
 
 const Post = () => {
 
@@ -9,7 +10,7 @@ const Post = () => {
     let history=useHistory()
 
     const handleSubmit = (event) => {
-			axios.post(`${URL}/messenger/`, post, {
+			axios.post(`${URLS}/messenger/`, post, {
 				headers: {
 					Authorization: `Token edc4bbb1a9cff37eec56e3df24c42d6fa9263dce`,
 				},

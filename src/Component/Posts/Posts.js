@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap'
-import URL from '../../config';
+import URLS from '../../config';
 
 const Posts = () => {
 	const [posts, setPosts] = useState([]);
  
 	const deletePost=()=>{
-		axios.delete(`${URL}/messenger/`, {
+		axios.delete(`${URLS}`, {
 			headers: { Authorization: `Token ${localStorage.getItem('token')}` },
 		});
 	}
@@ -16,7 +16,7 @@ const Posts = () => {
 	const showPosts =  () => {
 		
 			axios
-				.get(`${URL}/messenger/`, {
+				.get(`${URLS}/messenger/`, {
 					headers: {
 						Authorization: `Token edc4bbb1a9cff37eec56e3df24c42d6fa9263dce`,
 					},
