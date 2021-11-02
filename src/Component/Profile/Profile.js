@@ -4,19 +4,20 @@ import URL from '../../config';
 import './Profile.css'
 
 const Profile = () => {
-	const [state, setstate] = useState({});
-	const tokens = `c096b0cab2c6cc47dabe4fdbb3f5bd5307619a1e`;
-	const getProfile = async () => {
-		try {
-			const response = await axios
+	const [state, setstate] = useState([]);
+
+	const getProfile = () => {
+	
+			axios
 				.get(`http://localhost:8000/users/`, {
-					headers: { Authorization: `Bearer ${tokens}` },
+					headers: { Authorization: `Token ${localStorage.getItem('token')}` },
 				})
-				.then(setstate(response.data));
-		} catch (error) {}
+				.then(res=>setstate(res.data));
+	
 	};
 	useEffect(() => {
 		getProfile();
+		console.log(state)
 	}, []);
 	return (
 		<div className='container'>

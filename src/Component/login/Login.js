@@ -1,26 +1,52 @@
-import React from 'react';
-import { Form, Card } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Form, Card, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+	const [person,setperson]=useState({})
+
+	const handleSubmit = (event)=>{
+		event.preventDefault()
+		axios.post(`http://localhost:8000/token/login/`,person)
+		.then(res=>localStorage.setItem('token',res.data.auth_token))
+	}
+
+	const handleChange = (event)=>{
+		setperson({...person,[event.target.id]:event.target.value})
+	}
+
 	return (
 		<div>
-			<Card >
+			<Card>
 				<Card.Header>Featured</Card.Header>
-				<Form>
-					<Form.Group className='mb-3' controlId='formBasicEmail'>
+				<Form onSubmit={handleSubmit}>
+					<Form.Group className='mb-3' id='formBasicEmail'>
 						<Form.Label>Email address</Form.Label>
-						<Form.Control type='email' placeholder='Enter email' />
+						<Form.Control
+							onChange={handleChange}
+							id='email'
+							type='email'
+							placeholder='Enter email'
+						/>
 						<Form.Text className='text-muted'>
-							We'll never share your email with anyone else.
+							I'll never share your email with anyone else.
 						</Form.Text>
 					</Form.Group>
 
-					<Form.Group className='mb-3' controlId='formBasicPassword'>
+					<Form.Group className='mb-3' id='formBasicPassword'>
 						<Form.Label>Password</Form.Label>
-						<Form.Control type='password' placeholder='Password' />
+						<Form.Control
+							onChange={handleChange}
+							id='password'
+							type='password'
+							placeholder='Password'
+						/>
 					</Form.Group>
-					<Link to='/'className='btn btn-info'>Submit</Link>
+					<Button type='submit'className='btn btn-info'>
+						Submit
+					</Button>
 				</Form>
 			</Card>
 		</div>

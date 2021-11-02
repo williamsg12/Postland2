@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import { Container,Navbar,Nav } from 'react-bootstrap';
 
 const NavBar = () => {
+
+
+	function signOut(params) {
+		localStorage.removeItem('token');
+	}
 	return (
 		<div className='side-nav'>
 			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
@@ -18,6 +23,9 @@ const NavBar = () => {
 								<h4 className='nav'>Home</h4>
 							</Link>
 							<Link to='/posts' className='nav'>
+								<h4 className='nav'>Post History</h4>
+							</Link>
+							<Link to='/post' className='nav'>
 								<h4 className='nav'>Post</h4>
 							</Link>
 						</Nav>
@@ -27,6 +35,18 @@ const NavBar = () => {
 							</Link>
 							<Link to='setting' className='nav'>
 								<h4 className='nav'>Settings</h4>
+							</Link>
+							{!localStorage.getItem('token') ? (
+								<Link to='/login' className='nav'>
+									<h4 className='nav'>Sign In</h4>
+								</Link>
+							) : (
+								<Link to='/' className='nav' onClick={signOut}>
+									<h4 className='nav'>Sign Out</h4>
+								</Link>
+							)}
+							<Link to='signup' className='nav'>
+								<h4 className='nav'>Sign Up</h4>
 							</Link>
 						</Nav>
 					</Navbar.Collapse>

@@ -3,9 +3,11 @@ import './App.css';
 import NavBar from './Component/NavBar/NavBar';
 import Home from './Component/Home/Home'
 import Profile from './Component/Profile/Profile'
-import Post from './Component/Posts/Post'
+import Posts from './Component/Posts/Posts'
 import Settings from './Component/Settings/Settings';
 import Login from './Component/login/Login'
+import Post from './Component/Posts/Post'
+import Signup from './Component/login/Signup';
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
 
      <Route exact path='/' component={Home} />
      <Route path='/profile'component={Profile}/>
-     <Route path='/posts' component={Post} />
+     <Route path='/post' component={Post} />
+     <Route path='/posts' component={Posts} />
      <Route path='/setting' component={Settings} />
      <Route path='/login' component={Login} />
+     <Route path='/signup' component={Signup} />
     </div>
   );
 }
