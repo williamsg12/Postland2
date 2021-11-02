@@ -8,10 +8,9 @@ const Signup = () => {
 
     const handleSubmit = (event) => {
 			event.preventDefault();
-			axios
-				.post(`${URL}/users/`, user)
-				;
-		};
+			axios.post(`${URL}/users/`, user)
+				
+		}
 
 		const handleChange = (event) => {
 			setUser({ ...user, [event.target.id]: event.target.value });
@@ -20,7 +19,7 @@ const Signup = () => {
 			<div>
 				<Form onSubmit={handleSubmit} className='singupform'>
 					<Form.Group className='mb-3' controlId='formBasicUsername'>
-						<Form.Label>Usermane</Form.Label>
+						<Form.Label>Usernane</Form.Label>
 						<Form.Control
 							onChange={handleChange}
 							type='username'
