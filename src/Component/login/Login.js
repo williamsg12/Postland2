@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Card, Button} from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { URL } from '../../config'
+
 
 const Login = ({setLoggedIn}) => {
 
